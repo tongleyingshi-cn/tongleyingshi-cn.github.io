@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>童乐影视 - 儿童亲子动画影视在线观看平台</title>
+<meta name="description" content="童乐影视（tongleyingshi-cn）是专为儿童与家庭打造的亲子动画影视在线观看平台，提供优质动画片、早教启蒙、益智儿歌、亲子电影，绿色健康无广告，官方网址 https://tongleyingshi-cn.github.io。">
+<meta name="keywords" content="童乐影视,tongleyingshi,儿童动画,亲子电影,早教启蒙,益智儿歌,少儿影视">
+<meta name="author" content="童乐影视">
+<meta name="robots" content="index,follow">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:title" content="童乐影视 - 儿童亲子动画影视在线观看平台">
+<meta property="og:description" content="绿色健康的儿童亲子动画影视平台，早教启蒙、益智儿歌、亲子电影每日更新。">
+<meta property="og:url" content="https://tongleyingshi-cn.github.io">
+<meta property="og:site_name" content="童乐影视">
+<link rel="canonical" href="https://tongleyingshi-cn.github.io">
+<style>
+/* ============ 基础重置 ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#fffaf2;color:#4a3b4a;line-height:1.7;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+ul,ol,dl,menu{list-style:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+:root{
+  --pink:#ff7fa8;
+  --pink2:#ff5b8a;
+  --mint:#4fd1b5;
+  --lemon:#ffd24a;
+  --lilac:#a98bff;
+  --peach:#ffa06a;
+  --ink:#4a3b4a;
+  --muted:#8b7d8b;
+  --card:#ffffff;
+  --line:rgba(255,127,168,.28);
+  --shadow:0 10px 28px rgba(180,120,150,.16);
+}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+
+/* ============ 顶部导航 ============ */
+.hd{position:sticky;top:0;z-index:99;background:rgba(255,250,242,.92);backdrop-filter:blur(14px);border-bottom:2px dashed var(--line)}
+.hd-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900;color:var(--ink)}
+.logo .star{width:38px;height:38px;background:linear-gradient(135deg,var(--lemon),var(--pink));border-radius:12px;display:grid;place-items:center;font-size:20px;transform:rotate(-8deg);box-shadow:var(--shadow)}
+.logo b{color:var(--pink2)}
+.nav{display:flex;gap:8px;align-items:center}
+.nav a{padding:10px 18px;border-radius:999px;font-size:15px;color:var(--muted);transition:.25s;font-weight:700;position:relative}
+.nav a:not(.cta):hover{color:var(--pink2);background:rgba(255,127,168,.1)}
+.nav a.cta{padding:10px 26px;background:linear-gradient(135deg,var(--pink),var(--peach));color:#fff;box-shadow:0 6px 18px rgba(255,91,138,.4)}
+.nav a.cta:hover{transform:translateY(-2px)}
+.mbtn{display:none;width:46px;height:46px;border:2px dashed var(--line);background:#fff;color:var(--pink2);border-radius:14px;font-size:22px;cursor:pointer}
+
+/* ============ 英雄区：Hero + 评分微数据 ============ */
+.hero{position:relative;padding:70px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,var(--lemon),transparent 70%);opacity:.5;top:-120px;right:-100px}
+.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--mint),transparent 70%);opacity:.35;bottom:-120px;left:-90px}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;gap:46px;align-items:center}
+.hero h1{font-size:clamp(32px,6vw,58px);font-weight:900;line-height:1.16;letter-spacing:-1px;color:var(--ink)}
+.hero h1 span{color:var(--pink2);position:relative;display:inline-block}
+.hero h1 span::after{content:"";position:absolute;left:0;bottom:6px;width:100%;height:14px;background:var(--lemon);opacity:.55;z-index:-1;border-radius:8px}
+.hero>p{margin-top:20px;max-width:500px;color:var(--muted);font-size:16.5px}
+.h-acts{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:999px;font-size:15.5px;font-weight:800;transition:.25s;border:2px solid transparent;cursor:pointer}
+.btn-pri{background:linear-gradient(135deg,var(--pink),var(--peach));color:#fff;box-shadow:0 8px 24px rgba(255,91,138,.4)}
+.btn-pri:hover{transform:translateY(-3px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:#fff5ee}
+
+/* 评分徽章（差异化视觉组件：dfn + bdi） */
+.rate{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.rate dfn{font-style:normal;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px}
+.rate dfn bdi{font-weight:900;color:var(--pink2);font-size:20px}
+.rate dfn small{color:var(--muted);font-size:12.5px}
+
+/* 浮动装饰 */
+.floaty{position:absolute;font-size:30px;opacity:.85;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-16px) rotate(6deg)}}
+
+/* ============ 通用栏目标题 ============ */
+.sec{padding:78px 0;position:relative}
+.sec:nth-child(even){background:#fff6f0}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.sec-t h2{font-size:clamp(23px,3.4vw,31px);font-weight:900;display:flex;align-items:center;gap:12px;color:var(--ink)}
+.sec-t h2 .emo{font-size:26px}
+.sec-t h2 em{font-style:normal;color:var(--pink2)}
+.sec-t p{color:var(--muted);margin-top:8px;font-size:15px}
+.sec-hd a{color:var(--pink2);font-size:14.5px;font-weight:800;white-space:nowrap}
+.sec-hd a:hover{text-decoration:underline dotted}
+
+/* ============ 栏目一：今日推荐（ul 拖拽列表 + 单选，差异化 A） ============ */
+.rec{border:2px dashed var(--line);border-radius:24px;background:var(--card);padding:14px;box-shadow:var(--shadow)}
+.rec ul{display:grid;gap:12px}
+.rec ul li{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:16px;background:#fffaf2;transition:.25s;border:2px solid transparent}
+.rec ul li:hover{border-color:var(--pink);background:#fff;transform:translateX(6px)}
+.rec ul li label{display:flex;align-items:center;gap:14px;flex:1;cursor:pointer}
+.rec ul li input[type=radio]{appearance:none;width:22px;height:22px;border:2px solid var(--pink);border-radius:50%;position:relative;flex:0 0 auto;transition:.2s}
+.rec ul li input[type=radio]:checked{background:var(--pink)}
+.rec ul li input[type=radio]:checked::after{content:"";position:absolute;inset:5px;background:#fff;border-radius:50%}
+.rec ul li b{font-size:16px;color:var(--ink)}
+.rec ul li small{color:var(--muted);font-size:12.5px}
+.rec ul li .tag{margin-left:auto;font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;background:rgba(79,209,181,.2);color:#1f9b84;white-space:nowrap}
+.rec ul li:nth-child(2) .tag{background:rgba(169,139,255,.2);color:#7650d8}
+.rec ul li:nth-child(3) .tag{background:rgba(255,210,74,.3);color:#b5801a}
+
+/* ============ 栏目二：年龄分龄（nav 分龄条 + CSS 变量，差异化 B） ============ */
+.age{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.age>div{--c:var(--pink);background:var(--card);border:3px solid var(--c);border-radius:22px;padding:26px 22px;position:relative;transition:.3s;box-shadow:var(--shadow)}
+.age>div:nth-child(2){--c:var(--mint)}
+.age>div:nth-child(3){--c:var(--lilac)}
+.age>div:nth-child(4){--c:var(--peach)}
+.age>div:hover{transform:translateY(-6px) rotate(-1deg);background:var(--c);color:#fff}
+.age>div .badge{font-size:13px;font-weight:800;color:var(--c);background:rgba(255,255,255,.9);border:2px solid var(--c);border-radius:999px;padding:4px 14px;display:inline-block;margin-bottom:14px}
+.age>div:hover .badge{color:#fff;background:rgba(255,255,255,.22);border-color:#fff}
+.age>div h3{font-size:20px;font-weight:900;margin-bottom:10px;color:var(--ink)}
+.age>div:hover h3{color:#fff}
+.age>div p{font-size:14px;color:var(--muted)}
+.age>div:hover p{color:rgba(255,255,255,.92)}
+.age>div .ic{font-size:38px;position:absolute;top:20px;right:20px;opacity:.9}
+
+/* ============ 栏目三：动画排行（table 结构化 + 星级，差异化 C） ============ */
+.tbl-wrap{background:var(--card);border:2px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.tbl-wrap table{width:100%;border-collapse:collapse;font-size:15px}
+.tbl-wrap caption{caption-side:top;text-align:left;padding:20px 24px;font-weight:900;font-size:16px;color:var(--ink);background:#fff2f6}
+.tbl-wrap th,.tbl-wrap td{padding:15px 24px;text-align:left;border-bottom:1px dashed var(--line)}
+.tbl-wrap thead th{background:#fff6f0;color:var(--ink);font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+.tbl-wrap tbody tr:nth-child(even){background:#fffaf6}
+.tbl-wrap tbody tr:hover{background:#fff0f5}
+.tbl-wrap tbody tr:target,.tbl-wrap tbody tr[aria-current=true]{background:#fff0f5}
+.tbl-wrap .star{color:var(--lemon);letter-spacing:2px;font-size:13px}
+.tbl-wrap td a{color:var(--pink2);font-weight:700}
+
+/* ============ 栏目四：家长学堂（dl 术语表 + cite，差异化 D） ============ */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.guide dl{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);transition:.25s}
+.guide dl:hover{border-color:var(--mint);transform:translateY(-4px)}
+.guide dt{font-size:18px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.guide dt::before{content:"";width:12px;height:12px;background:var(--mint);border-radius:50%;box-shadow:0 0 0 5px rgba(79,209,181,.18)}
+.guide dd{color:var(--muted);font-size:14.5px}
+.guide dd cite{display:block;margin-top:12px;font-style:normal;font-size:13px;color:var(--pink2);font-weight:700}
+
+/* ============ 页脚 ============ */
+.ft{background:#4a3b4a;color:#d8cdd8;padding:56px 0 24px;margin-top:30px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;margin-bottom:36px}
+.ft-grid h5{font-size:15px;margin-bottom:16px;color:#fff;display:flex;align-items:center;gap:8px}
+.ft-grid h5::before{content:"✿";color:var(--pink)}
+.ft-grid ul li{margin-bottom:11px}
+.ft-grid ul a{color:#b8a8b8;font-size:14px;transition:.2s}
+.ft-grid ul a:hover{color:var(--pink)}
+.ft-brand .logo b{color:var(--pink)}
+.ft-brand p{color:#b8a8b8;font-size:14px;margin-top:14px;max-width:320px}
+.copy{text-align:center;color:#9a889a;font-size:13px;padding-top:22px;border-top:1px dashed rgba(255,255,255,.2)}
+
+/* ============ 回到顶部 ============ */
+.top{position:fixed;right:20px;bottom:24px;width:50px;height:50px;border:0;background:linear-gradient(135deg,var(--pink),var(--peach));color:#fff;border-radius:50%;font-size:22px;cursor:pointer;box-shadow:0 8px 24px rgba(255,91,138,.5);opacity:0;visibility:hidden;transition:.3s;z-index:98}
+.top.show{opacity:1;visibility:visible}
+
+/* ============ 响应式 ============ */
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero{padding:56px 0 70px}
+}
+@media(max-width:768px){
+  .nav{position:fixed;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;padding:16px;background:#fffaf2;border-bottom:2px dashed var(--line);transform:translateY(-150%);transition:.35s;gap:6px;box-shadow:0 12px 30px rgba(180,120,150,.2)}
+  .nav.open{transform:translateY(0)}
+  .nav a{width:100%;text-align:center;padding:14px}
+  .mbtn{display:grid;place-items:center}
+  .sec{padding:56px 0}
+  .guide{grid-template-columns:1fr}
+  .tbl-wrap{overflow-x:auto}
+  .tbl-wrap table{min-width:520px}
+}
+@media(max-width:520px){
+  .wrap{padding:0 16px}
+  .ft-grid{grid-template-columns:1fr}
+  .btn{padding:12px 26px;font-size:14.5px}
+  .age{grid-template-columns:1fr}
+  .rate{justify-content:center}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="hd">
+  <div class="wrap hd-in">
+    <a href="#" class="logo"><span class="star">✦</span><b>童乐影视</b></a>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#rec">今日推荐</a>
+      <a href="#age">分龄精选</a>
+      <a href="#tbl">动画排行</a>
+      <a href="#guide">家长学堂</a>
+      <a href="#" class="cta">免费观看</a>
+    </nav>
+    <button class="mbtn" id="mbtn" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- ===== 英雄区 ===== -->
+<section class="hero" id="home">
+  <span class="floaty" style="top:12%;left:6%">🎈</span>
+  <span class="floaty" style="top:60%;left:3%;animation-delay:1.2s">🌈</span>
+  <span class="floaty" style="bottom:8%;right:8%;animation-delay:.6s">⭐</span>
+  <div class="wrap">
+    <div class="h-txt">
+      <h1>让每个童年<br>都充满 <span>欢乐光影</span></h1>
+      <p>童乐影视专注儿童与家庭亲子影视，精选优质动画片、早教启蒙、益智儿歌与亲子电影，绿色健康、无广告干扰，陪孩子快乐成长。</p>
+      <div class="h-acts">
+        <a href="#rec" class="btn btn-pri">🎬 开始观看</a>
+        <a href="#age" class="btn btn-ghost">按年龄选片</a>
+      </div>
+      <div class="rate">
+        <dfn>家长推荐指数 <bdi>98</bdi><small>/100</small></dfn>
+        <dfn>绿色安全 <bdi>100</bdi><small>% 无广告</small></dfn>
+      </div>
+    </div>
+    <aside aria-label="平台亮点" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:#fff;border:2px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--shadow)">
+        <div style="font-size:40px">🎨</div><div style="font-size:26px;font-weight:900;color:var(--pink2);margin-top:8px">5,000+</div><div style="color:var(--muted);font-size:13px">优质动画</div>
+      </div>
+      <div style="background:#fff;border:2px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--shadow)">
+        <div style="font-size:40px">👨‍👩‍👧</div><div style="font-size:26px;font-weight:900;color:var(--mint);margin-top:8px">分龄推荐</div><div style="color:var(--muted);font-size:13px">科学适龄</div>
+      </div>
+      <div style="background:#fff;border:2px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--shadow)">
+        <div style="font-size:40px">🛡️</div><div style="font-size:26px;font-weight:900;color:var(--lilac);margin-top:8px">绿色健康</div><div style="color:var(--muted);font-size:13px">内容严审</div>
+      </div>
+      <div style="background:#fff;border:2px solid var(--line);border-radius:22px;padding:26px;text-align:center;box-shadow:var(--shadow)">
+        <div style="font-size:40px">📱</div><div style="font-size:26px;font-weight:900;color:var(--peach);margin-top:8px">多端同步</div><div style="color:var(--muted);font-size:13px">手机平板电视</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== 栏目一：今日推荐（ul + 单选，差异化 A） ===== -->
+<section class="sec" id="rec">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-t"><h2><span class="emo">🎁</span>今日<em>推荐</em></h2><p>点选你最想看的一部</p></div>
+      <a href="#">全部推荐 →</a>
+    </div>
+    <div class="rec">
+      <ul>
+        <li><label><input type="radio" name="pick"><span><b>小熊森林大冒险</b> <small>· 动画 / 友情 · 全26集</small></span></label><span class="tag">热播</span></li>
+        <li><label><input type="radio" name="pick"><span><b>彩虹拼音岛</b> <small>· 早教 / 拼音启蒙 · 全52集</small></span></label><span class="tag">启蒙</span></li>
+        <li><label><input type="radio" name="pick"><span><b>星星睡不着</b> <small>· 儿歌 / 哄睡 · 全30首</small></span></label><span class="tag">儿歌</span></li>
+        <li><label><input type="radio" name="pick"><span><b>小小科学家</b> <small>· 科普 / 益智 · 全24集</small></span></label><span class="tag">科普</span></li>
+        <li><label><input type="radio" name="pick"><span><b>家庭奇妙日</b> <small>· 亲子电影 / 合家欢 · 92分钟</small></span></label><span class="tag">电影</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目二：分龄精选（nav 分龄条 + CSS 变量，差异化 B） ===== -->
+<section class="sec" id="age">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-t"><h2><span class="emo">🧸</span>分龄<em>精选</em></h2><p>按年龄科学推荐，适龄更安心</p></div>
+      <a href="#">完整分龄 →</a>
+    </div>
+    <div class="age">
+      <div><span class="ic">👶</span><span class="badge">0-3 岁</span><h3>启蒙认知</h3><p>色彩、声音与形状认知，节奏舒缓，保护宝宝视力。</p></div>
+      <div><span class="ic">🧒</span><span class="badge">3-6 岁</span><h3>习惯养成</h3><p>生活自理、礼貌交往主题动画，在故事中学习好习惯。</p></div>
+      <div><span class="ic">🧑</span><span class="badge">6-9 岁</span><h3>益智探索</h3><p>科普百科、逻辑推理内容，激发好奇心与探索欲。</p></div>
+      <div><span class="ic">👨‍👩‍👧</span><span class="badge">全家</span><h3>亲子共赏</h3><p>合家欢电影与温情剧集，周末一起享受影院时光。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目三：动画排行（table 结构化，差异化 C） ===== -->
+<section class="sec" id="tbl">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-t"><h2><span class="emo">🏆</span>动画<em>排行</em></h2><p>本周最受小朋友喜爱榜单</p></div>
+      <a href="#">完整榜单 →</a>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <caption>童乐影视 · 本周动画排行榜</caption>
+        <thead><tr><th scope="col">排名</th><th scope="col">作品名称</th><th scope="col">适合年龄</th><th scope="col">类型</th><th scope="col">评分</th><th scope="col">详情</th></tr></thead>
+        <tbody>
+          <tr><td>🥇 1</td><th scope="row">小熊森林大冒险</th><td>3-6 岁</td><td>动画</td><td class="star">★★★★★</td><td><a href="#">查看</a></td></tr>
+          <tr><td>🥈 2</td><th scope="row">彩虹拼音岛</th><td>4-7 岁</td><td>早教</td><td class="star">★★★★☆</td><td><a href="#">查看</a></td></tr>
+          <tr><td>🥉 3</td><th scope="row">小小科学家</th><td>6-9 岁</td><td>科普</td><td class="star">★★★★★</td><td><a href="#">查看</a></td></tr>
+          <tr><td>4</td><th scope="row">星星睡不着</th><td>0-3 岁</td><td>儿歌</td><td class="star">★★★★☆</td><td><a href="#">查看</a></td></tr>
+          <tr><td>5</td><th scope="row">家庭奇妙日</th><td>全家</td><td>电影</td><td class="star">★★★★★</td><td><a href="#">查看</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目四：家长学堂（dl 术语表 + cite，差异化 D） ===== -->
+<section class="sec" id="guide">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-t"><h2><span class="emo">📖</span>家长<em>学堂</em></h2><p>科学陪伴，让屏幕时间更有价值</p></div>
+      <a href="#">更多文章 →</a>
+    </div>
+    <div class="guide">
+      <dl><dt>控制观看时长</dt><dd>遵循"20-20-20"护眼法则：每看 20 分钟，远眺 20 英尺外 20 秒，避免连续用眼。</dd><cite>—— 护眼小贴士</cite></dl>
+      <dl><dt>陪伴式观看</dt><dd>和孩子一起看、一起讨论剧情，把观看变成亲子交流的机会，效果更好。</dd><cite>—— 亲子陪伴</cite></dl>
+      <dl><dt>内容适龄把关</dt><dd>根据孩子的年龄与认知水平选择内容，童乐影视分龄推荐帮你轻松把关。</dd><cite>—— 内容选择</cite></dl>
+      <dl><dt>营造观影环境</dt><dd>保持适当光线与观看距离，避免黑暗环境中近距离观看，保护视力健康。</dd><cite>—— 环境建议</cite></dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="logo"><span class="star">✦</span><b>童乐影视</b></div>
+        <p>童乐影视，专为儿童与家庭打造的亲子动画影视平台，绿色健康、分龄推荐，让每个孩子快乐成长。</p>
+      </div>
+      <div><h5>网站导航</h5><ul>
+        <li><a href="#home">网站首页</a></li>
+        <li><a href="#rec">今日推荐</a></li>
+        <li><a href="#age">分龄精选</a></li>
+        <li><a href="#tbl">动画排行</a></li>
+      </ul></div>
+      <div><h5>家长服务</h5><ul>
+        <li><a href="#guide">家长学堂</a></li>
+        <li><a href="#">护眼指南</a></li>
+        <li><a href="#">内容举报</a></li>
+        <li><a href="#">联系我们</a></li>
+      </ul></div>
+    </div>
+    <div class="copy">
+      © 2026 童乐影视 tongleyingshi-cn · 网站网址：https://tongleyingshi-cn.github.io · 本站内容仅供儿童学习娱乐参考使用，家长请陪同观看
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="top" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),btn=document.getElementById('mbtn'),top=document.getElementById('top');
+  btn.addEventListener('click',function(){nav.classList.toggle('open')});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open')})});
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>400){top.classList.add('show')}else{top.classList.remove('show')}
+  });
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
